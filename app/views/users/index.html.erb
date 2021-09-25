@@ -1,15 +1,17 @@
 <div>
     <h1>Contacts</h1>
     <div>
-        <%= form_for :users, :url => "/users/show",  :html => { :method => 'GET' } do |f| %>
-            I am: <%= f.collection_select :ids, @users, :id, :name %> <br>
+        <%= form_for :admins, :url => "/users/show",  :html => { :method => 'GET' } do |f| %>
+            I am: <%= f.collection_select :ids, @admins, :id, :email %> <br>
             <%= f.label "Who do you want to chat with?" %> <br>
             
-            <% @users.each do |user| %>
-                <%= radio_button_tag(:receiver_id, user.id) %>
-                <%= label_tag(:name, user.name) %> <br>
+            <% @admins.each do |admin| %>
+                <%= radio_button_tag(:receiver_id, admin.id) %>
+                <%= label_tag(:email, admin.email) %> <br>
             <% end %>
             <%= f.submit "Chat"%>
         <% end %>
     </div>
 </div>
+ 
+<%= link_to "Sign In", new_admin_registration_path %>
